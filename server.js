@@ -3,6 +3,9 @@ const hbs = require('hbs');
 
 var app = express();
 
+//register hbs for using partials
+hbs.registerPartials(__dirname + '/views/partials');
+
 //set handlerbar (hbs) engine setting for template
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
