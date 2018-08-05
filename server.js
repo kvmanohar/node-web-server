@@ -5,6 +5,10 @@ var app = express();
 
 //register hbs for using partials
 hbs.registerPartials(__dirname + '/views/partials');
+//register hbs helper function
+hbs.registerHelper('getCurrentYear', () => {
+    return new Date().getFullYear();
+});
 
 //set handlerbar (hbs) engine setting for template
 app.set('view engine', 'html');
@@ -22,8 +26,7 @@ app.get("/", (req, res) => {
 
     res.render('home.html', {
         pageTitle: 'WELCOME to Home Page',
-        welcomeMessage: 'This is the home page of Node JS Home Tutorial.',
-        currentYear: new Date().getFullYear()
+        welcomeMessage: 'This is the home page of Node JS Home Tutorial.'
     });
 });
 
@@ -31,8 +34,7 @@ app.get("/about", (req, res) => {
     // res.send("<h1>About Page!</h1>");
     res.render('about.html', {
         pageTitle: 'About Page - Header passed',
-        welcomeMessage: 'This is the About page of the website.',
-        currentYear: new Date().getFullYear()
+        welcomeMessage: 'This is the About page of the website.'
     });
 });
 
