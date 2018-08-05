@@ -3,10 +3,12 @@ const hbs = require('hbs');
 
 var app = express();
 
+//set handlerbar (hbs) engine setting for template
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
 
-app.use(express.static(__dirname + "/public"));
+//express to call the static html page//
+app.use(express.static(__dirname + '/public'));
 
 app.get("/", (req, res) => {
     // res.send('<h1>Hello Express!</h1>');
@@ -17,7 +19,8 @@ app.get("/", (req, res) => {
 
     res.render('home.html', {
         pageTitle: 'WELCOME to Home Page',
-        bodyMessage: 'This is the home page of Node JS Home Tutorial '
+        welcomeMessage: 'This is the home page of Node JS Home Tutorial ',
+        currentYear: new Date().getFullYear()
     });
 });
 
