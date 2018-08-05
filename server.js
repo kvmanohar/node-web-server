@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 
     res.render('home.html', {
         pageTitle: 'WELCOME to Home Page',
-        welcomeMessage: 'This is the home page of Node JS Home Tutorial ',
+        welcomeMessage: 'This is the home page of Node JS Home Tutorial.',
         currentYear: new Date().getFullYear()
     });
 });
@@ -31,6 +31,7 @@ app.get("/about", (req, res) => {
     // res.send("<h1>About Page!</h1>");
     res.render('about.html', {
         pageTitle: 'About Page - Header passed',
+        welcomeMessage: 'This is the About page of the website.',
         currentYear: new Date().getFullYear()
     });
 });
@@ -41,6 +42,6 @@ app.get("/bad", (req, res) => {
         errorCode: 501
     });
 });
-app.listen(3000, () => {
-    console.log("Server is up on port 3000");
+app.listen(8000, () => {
+    console.log("Server is up on port 8000");
 });
