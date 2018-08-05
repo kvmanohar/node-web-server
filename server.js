@@ -5,9 +5,14 @@ var app = express();
 
 //register hbs for using partials
 hbs.registerPartials(__dirname + '/views/partials');
-//register hbs helper function
+
+//register hbs helper functions
 hbs.registerHelper('getCurrentYear', () => {
     return new Date().getFullYear();
+});
+
+hbs.registerHelper('screamIT', (text) => {
+    return text.toUpperCase();
 });
 
 //set handlerbar (hbs) engine setting for template
