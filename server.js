@@ -1,6 +1,10 @@
 const express = require("express");
+const hbs = require('hbs');
 
 var app = express();
+
+app.set('view engine', 'html');
+app.engine('html', hbs.__express);
 
 app.use(express.static(__dirname + "/public"));
 
@@ -13,7 +17,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-    res.send("<h1>About Page!</h1>");
+    // res.send("<h1>About Page!</h1>");
+    res.render('about.html', {
+        pageTitle: 'About Page - Header passed',
+        currentYear: new Date().getFullYear()
+    });
 });
 
 app.get("/bad", (req, res) => {
