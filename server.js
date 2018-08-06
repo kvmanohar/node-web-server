@@ -22,6 +22,13 @@ app.engine('html', hbs.__express);
 //express to call the static html page//
 app.use(express.static(__dirname + '/public'));
 
+app.use((req, res, next) => {
+    var now = new Date().toString();
+    console.log(now + ': ' + req.method + ' ' + req.url);
+
+    next();
+});
+
 app.get("/", (req, res) => {
     // res.send('<h1>Hello Express!</h1>');
     // res.send({
