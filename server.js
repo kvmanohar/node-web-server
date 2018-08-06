@@ -1,5 +1,6 @@
 const express = require("express");
 const hbs = require('hbs');
+const fs = require('fs');
 
 var app = express();
 
@@ -22,10 +23,16 @@ app.engine('html', hbs.__express);
 //express to call the static html page//
 app.use(express.static(__dirname + '/public'));
 
+//Middleware function to log the req and res
 app.use((req, res, next) => {
     var now = new Date().toString();
-    console.log(now + ': ' + req.method + ' ' + req.url);
-
+    var logMsg = now + ': ' + req.method + ' ' + req.url;
+    console.log(logMsg);
+    fs.appendFile('server.log', logMsg + '\n', (err) => {
+        if (err) {
+            console.log('Unable to append to server.log.');
+        }
+    });
     next();
 });
 
