@@ -36,6 +36,10 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use((req, res, next) => {
+    res.render('maintenance.html');
+});
+
 app.get("/", (req, res) => {
     // res.send('<h1>Hello Express!</h1>');
     // res.send({
